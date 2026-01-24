@@ -1177,12 +1177,15 @@ p {
     transform: scale(1);
 }
 
-.single_service:hover .service_content .service_title a,
-.single_service:hover .service_content p {
+
+
+.single_service:hover,
+.single_service:hover * {
     color: #fff !important;
 }
 
 
 /*# sourceMappingURL=style.css.map */
+
 
 
