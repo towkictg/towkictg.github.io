@@ -1,2 +1,2 @@
-# tariqulislam.github.io
+# towkictg.github.io
 Personal site
