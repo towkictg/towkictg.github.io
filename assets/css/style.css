@@ -998,20 +998,23 @@ p {
       -ms-transition: all 0.3s ease-out 0s;
       -o-transition: all 0.3s ease-out 0s;
       transition: all 0.3s ease-out 0s; }
-  .single_service:hover {
-    background-color: #00A78E; }
-    .single_service:hover .service_icon i {
-      background-color: #fff;
-      color: #00A78E; }
-    .single_service:hover .service_content .service_title a {
-      color: #fff; }
-    .single_service:hover .service_content p {
-      color: #fff; }
-
-/* FIXED: ensure text becomes white on hover */
-.single_service:hover .service_content p {
-    color: #fff !important;
+ .single_service:hover {
+  background-color: #00A78E;
 }
+
+.single_service:hover .service_icon i {
+  background-color: #fff;
+  color: #00A78E;
+}
+
+.single_service:hover .service_content .service_title a {
+  color: #fff !important;   /* heading becomes white */
+}
+
+.single_service:hover .service_content p {
+  color: #fff !important;   /* details becomes white */
+}
+
 
 /*===========================
    10.CALL TO ACTION css 
@@ -1175,3 +1178,4 @@ p {
 }
 
 /*# sourceMappingURL=style.css.map */
+
