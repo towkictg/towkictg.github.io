@@ -1,204 +1,198 @@
-/*-----------------------------------------------------------------------------------
-    Clean Custom CSS
------------------------------------------------------------------------------------*/
-
-/*-----------------------------
-    00. COMMON / RESET
------------------------------*/
-@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800|Open+Sans:400,600,700&display=swap");
-
+/*====== RESET & BASE ======*/
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
-  color: #646F87;
+    font-family: "Poppins", sans-serif;
+    line-height: 1.6;
+    color: #222;
 }
 
-img {
-  max-width: 100%;
-  display: block;
+/*====== HEADER ======*/
+.header_area {
+    background: #fff;
 }
 
-a {
-  color: #00A78E;
-  text-decoration: none;
+.header_navbar {
+    background: #fff;
+    position: fixed;
+    width: 100%;
+    z-index: 999;
 }
 
-/*-----------------------------
-    01. BUTTONS
------------------------------*/
-.main-btn {
-  display: inline-block;
-  font-weight: 600;
-  padding: 0 40px;
-  font-size: 16px;
-  line-height: 55px;
-  height: 55px;
-  border-radius: 5px;
-  color: #fff;
-  background-color: #00A78E;
-  transition: all 0.4s ease;
+.navbar-brand img {
+    width: 55px;
+    height: auto;
 }
 
-.main-btn:hover {
-  background-color: rgba(0, 167, 142, 0.7);
+.sub-menu-bar .navbar-nav .nav-item .nav-link {
+    color: #0b2e4b;
+    font-weight: 500;
 }
 
-/*-----------------------------
-    02. HEADER / HERO
------------------------------*/
+.sub-menu-bar .navbar-nav .nav-item .nav-link:hover {
+    color: #00a86b;
+}
+
+/*====== HERO ======*/
 .header_hero {
-  background-color: #F9F9F9;
-  padding-top: 70px;
-  position: relative;
-  overflow: hidden;
+    background: #f6f9ff;
+    padding: 140px 0 100px;
 }
 
-.header_hero_shape {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 50%;
-  height: 100%;
-  z-index: -1;
+.header_hero_content .header_sub_title {
+    font-size: 18px;
+    color: #0b2e4b;
+    font-weight: 700;
 }
 
-.header_hero_shape::before {
-  content: "";
-  position: absolute;
-  width: 1000%;
-  height: 100%;
-  background-color: #00A78E;
-  transform: skewX(20deg);
-  top: 0;
-  left: 0;
-}
-
-/* Hero titles */
 .header_hero_content .header_title {
-  font-size: 32px;
-  font-weight: 700;
-  color: #293651;
-  margin-top: 20px;
+    font-size: 48px;
+    font-weight: 700;
+    color: #0b2e4b;
+    margin: 8px 0;
 }
 
-/*-----------------------------
-    03. SERVICES (Projects / Experience)
------------------------------*/
+.header_hero_content p {
+    font-size: 16px;
+    color: #6b7a8a;
+}
+
+/*====== ABOUT ======*/
+.about_area {
+    background: #fff;
+}
+
+.section_title .sub_title {
+    color: #0b2e4b;
+    font-weight: 700;
+}
+
+.section_title .main_title {
+    color: #0b2e4b;
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.section_title .line {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.section_title .line li {
+    width: 30px;
+    height: 2px;
+    background: #00a86b;
+}
+
+/*====== SERVICES / EXPERIENCE ======*/
 .services_area {
-  background-color: #F9F9F9;
+    background: #f6f9ff;
 }
 
 .single_service {
-  padding: 30px;
-  border-radius: 5px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(196, 196, 196, 0.3);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
 }
 
-/* Hover background */
 .single_service:hover {
-  background-color: #2c2f4a;
+    background: #00a86b;
+    color: #fff;
 }
 
-/* Hover text color */
-.single_service:hover p,
-.single_service:hover span,
-.single_service:hover li,
-.single_service:hover h4 {
-  color: #fff !important;
+.single_service:hover p {
+    color: #fff;
 }
 
-/* Hover link color */
-.single_service:hover a {
-  color: #ffd369 !important;
+.service_title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #0b2e4b;
+    display: flex;
+    align-items: center;
 }
 
-/*-----------------------------
-    04. PROJECT IMAGE ON HOVER
------------------------------*/
+/*====== PROJECTS ======*/
 .project-hover {
-  position: relative;
-  overflow: hidden;
-}
-
-.conference-image {
-  position: absolute;
-  bottom: 15px;
-  right: 15px;
-  width: 220px;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: all 0.3s ease;
-  pointer-events: none;
-}
-
-.conference-image img {
-  width: 100%;
-  border-radius: 8px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    position: relative;
 }
 
 .project-hover:hover .conference-image {
-  opacity: 1;
-  transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
 }
 
-/*-----------------------------
-    05. PROFILE IMAGE (CLEAN FIX)
------------------------------*/
-.profile-image {
-  max-width: 280px;
-  margin: auto;
+.conference-image {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 260px;
+    border-radius: 8px;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
 }
 
-.profile-image img {
-  width: 100%;
-  height: auto;
-  border-radius: 0;     /* remove round shape */
-  object-fit: contain;  /* keep original ratio */
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+.conference-image img {
+    width: 100%;
+    height: auto;
 }
 
-/* Mobile size */
-@media (max-width: 991px) {
-  .profile-image {
-    max-width: 220px;
-    margin-top: 40px;
-  }
+/*====== CONTACT ======*/
+.call_to_action_area {
+    background: #fff;
 }
 
-/*-----------------------------
-    06. CONTACT BUTTONS
------------------------------*/
-.contact-buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.call_to_action_box {
+    background: #f6f9ff;
+    padding: 40px;
+    border-radius: 8px;
 }
 
-.contact-buttons .main-btn {
-  width: fit-content;
+.call_to_action_content h3 {
+    color: #0b2e4b;
+    font-size: 30px;
+    font-weight: 700;
 }
 
-/*-----------------------------
-    07. FOOTER
------------------------------*/
+.call_to_action_btn .main-btn {
+    background: #0b2e4b;
+    color: #fff;
+    padding: 10px 30px;
+    border-radius: 6px;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 15px;
+}
+
+/*====== FOOTER ======*/
+.footer_area {
+    background: #f6f9ff;
+}
+
 .footer_content .email {
-  font-size: 44px;
-  font-weight: 600;
-  color: #293651;
+    color: #0b2e4b;
+    font-weight: 700;
 }
 
-@media (max-width: 767px) {
-  .footer_content .email {
-    font-size: 20px;
-  }
+.footer_content .credit a {
+    color: #0b2e4b;
+}
+
+/*====== PROFILE PICTURE FIX (ONLY ADDED SECTION) ======*/
+.profile-image img {
+    width: auto !important;
+    height: auto !important;
+    max-width: 100% !important;
+    border-radius: 0 !important;
+    object-fit: contain !important;
 }
