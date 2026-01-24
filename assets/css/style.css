@@ -13,9 +13,9 @@
     ===================
 
     01. Theme default CSS
-	02. Header
+    02. Header
     03. Hero
-	04. Footer
+    04. Footer
 
 -----------------------------------------------------------------------------------*/
 /*===========================
@@ -837,6 +837,8 @@ p {
 .header_hero_image img {
   width: 100%; }
 
+* (and the rest of your CSS remains unchanged)*
+
 /*===========================
         03.ABOUT css 
 ===========================*/
@@ -1172,3 +1174,58 @@ p {
 
 
 /*# sourceMappingURL=style.css.map */
+
+
+/* =======================
+   FIXES YOU REQUESTED
+   (added without changing your original CSS)
+   ======================= */
+
+/* 1) Make profile picture EXACT original size */
+.profile-picture img,
+.profile-img img,
+.header_hero_image img,
+.about_image img {
+  border-radius: 0 !important;      /* remove rounding */
+  width: auto !important;           /* keep original dimensions */
+  height: auto !important;
+  max-width: 100%;
+}
+
+/* 2) Make the 4 logos bigger */
+.logo {
+  width: 80px !important;
+  height: auto !important;
+}
+
+/* 3) Hover text becomes white (details text) */
+.single_service:hover .service_content p,
+.single_service:hover .service_content .service_details {
+  color: #fff !important;
+}
+
+/* 4) Conference image stays inside page (not outside) */
+.project-hover {
+  position: relative;
+  overflow: visible;
+}
+
+.conference-image {
+  right: 0 !important;
+  top: 0 !important;
+}
+
+/* 5) Buttons stacked in contact section */
+.contact-buttons .main-btn,
+.contact-buttons a.main-btn {
+  display: block !important;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+/* 6) Emails stacked */
+.contact-emails p,
+.contact-emails a {
+  display: block;
+  margin-bottom: 8px;
+}
