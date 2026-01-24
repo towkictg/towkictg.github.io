@@ -1170,6 +1170,31 @@ p {
     transform: scale(1);
 }
 
+.profile-image {
+    max-width: 280px;
+    margin: auto;
+}
+
+.profile-image img {
+    width: 100%;
+    border-radius: 50%;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.profile-image img:hover {
+    transform: scale(1.05);
+}
+
+/* Mobile adjustment */
+@media (max-width: 991px) {
+    .profile-image {
+        margin-top: 40px;
+        max-width: 220px;
+    }
+}
+
 
 /*# sourceMappingURL=style.css.map */
+
 
