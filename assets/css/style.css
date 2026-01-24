@@ -1146,15 +1146,16 @@ p {
 
 .project-hover {
     position: relative;
+    overflow: hidden; /* 🔑 keeps image inside */
 }
 
 .conference-image {
     position: absolute;
-    top: 10px;
-    right: -260px;
-    width: 240px;
+    bottom: 15px;
+    right: 15px;
+    width: 220px;
     opacity: 0;
-    transform: scale(0.95);
+    transform: translateY(10px);
     transition: all 0.3s ease;
     pointer-events: none;
 }
@@ -1162,13 +1163,14 @@ p {
 .conference-image img {
     width: 100%;
     border-radius: 8px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
 .project-hover:hover .conference-image {
     opacity: 1;
-    transform: scale(1);
+    transform: translateY(0);
 }
+
 
 .profile-image {
     max-width: 280px;
@@ -1225,6 +1227,7 @@ p {
 
 
 /*# sourceMappingURL=style.css.map */
+
 
 
 
