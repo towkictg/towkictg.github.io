@@ -814,7 +814,7 @@ p {
     .header_hero_content .header_sub_title {
       font-size: 30px; } }
 .header_hero_content .header_title {
-  font-size: 50px;
+  font-size: 32px;
   font-weight: 700;
   color: #293651;
   margin-top: 20px; }
@@ -1227,6 +1227,7 @@ p {
 
 
 /*# sourceMappingURL=style.css.map */
+
 
 
 
