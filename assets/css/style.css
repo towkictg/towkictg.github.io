@@ -1243,10 +1243,17 @@ p {
     border-radius: 8px;   /* 🔑 square with slight softness */
 }
 
+/* ====== FORCE square profile picture ====== */
+.profile-image img,
+.profile-pic {
+    border-radius: 0 !important;
+}
+
 
 
 
 /*# sourceMappingURL=style.css.map */
+
 
 
 
