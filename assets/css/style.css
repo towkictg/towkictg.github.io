@@ -1225,8 +1225,29 @@ p {
 }
 
 
+.contact-buttons {
+    display: flex;
+    flex-direction: column; /* 🔑 stack vertically */
+    gap: 10px;
+}
+
+.contact-buttons .main-btn {
+    width: fit-content;
+}
+
+
+.profile-pic {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;   /* 🔑 square with slight softness */
+}
+
+
+
 
 /*# sourceMappingURL=style.css.map */
+
 
 
 
