@@ -279,7 +279,6 @@ p {
       -o-animation: ytp-right-spin 1333ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
       animation: ytp-right-spin 1333ms cubic-bezier(0.4, 0, 0.2, 1) infinite both; }
 
-/* Preloader Animations */
 @-webkit-keyframes ytp-spinner-linspin {
   to {
     -webkit-transform: rotate(360deg);
@@ -837,8 +836,6 @@ p {
 .header_hero_image img {
   width: 100%; }
 
-* (and the rest of your CSS remains unchanged)*
-
 /*===========================
         03.ABOUT css 
 ===========================*/
@@ -1011,6 +1008,11 @@ p {
     .single_service:hover .service_content p {
       color: #fff; }
 
+/* FIXED: ensure text becomes white on hover */
+.single_service:hover .service_content p {
+    color: #fff !important;
+}
+
 /*===========================
    10.CALL TO ACTION css 
 ===========================*/
@@ -1153,7 +1155,7 @@ p {
 .conference-image {
     position: absolute;
     top: 10px;
-    right: -260px;
+    right: 10px; /* FIXED: image stays inside page */
     width: 240px;
     opacity: 0;
     transform: scale(0.95);
@@ -1172,60 +1174,4 @@ p {
     transform: scale(1);
 }
 
-
 /*# sourceMappingURL=style.css.map */
-
-
-/* =======================
-   FIXES YOU REQUESTED
-   (added without changing your original CSS)
-   ======================= */
-
-/* 1) Make profile picture EXACT original size */
-.profile-picture img,
-.profile-img img,
-.header_hero_image img,
-.about_image img {
-  border-radius: 0 !important;      /* remove rounding */
-  width: auto !important;           /* keep original dimensions */
-  height: auto !important;
-  max-width: 100%;
-}
-
-/* 2) Make the 4 logos bigger */
-.logo {
-  width: 80px !important;
-  height: auto !important;
-}
-
-/* 3) Hover text becomes white (details text) */
-.single_service:hover .service_content p,
-.single_service:hover .service_content .service_details {
-  color: #fff !important;
-}
-
-/* 4) Conference image stays inside page (not outside) */
-.project-hover {
-  position: relative;
-  overflow: visible;
-}
-
-.conference-image {
-  right: 0 !important;
-  top: 0 !important;
-}
-
-/* 5) Buttons stacked in contact section */
-.contact-buttons .main-btn,
-.contact-buttons a.main-btn {
-  display: block !important;
-  width: 100%;
-  margin-bottom: 15px;
-}
-
-/* 6) Emails stacked */
-.contact-emails p,
-.contact-emails a {
-  display: block;
-  margin-bottom: 8px;
-}
