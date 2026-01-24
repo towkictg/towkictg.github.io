@@ -1194,7 +1194,37 @@ p {
     }
 }
 
+/* Improve text visibility on hover */
+.single_service:hover {
+    background-color: #2c2f4a; /* deep navy-gray */
+}
+
+/* Make paragraph text white on hover */
+.single_service:hover p,
+.single_service:hover span,
+.single_service:hover li {
+    color: #ffffff !important;
+}
+
+/* Keep headings readable */
+.single_service:hover h4,
+.single_service:hover h3 {
+    color: #ffffff;
+}
+
+/* Keep links visible */
+.single_service:hover a {
+    color: #ffd369;
+}
+
+/* Smooth transition */
+.single_service {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
 
 /*# sourceMappingURL=style.css.map */
+
 
 
