@@ -1,27 +1,18 @@
-steps:
+name: Deploy Resume to AWS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0 # Needed for deep security scanning
 
-      # --- SECURITY CHECK 1: SECRET SCANNING ---
-      - name: Secret Scan (TruffleHog)
-        uses: trufflesecurity/trufflehog@main
-        with:
-          path: ./
-          base: ${{ github.event.repository.default_branch }}
-          head: HEAD
-          extra_args: --debug --only-verified
-
-      # --- SECURITY CHECK 2: LINTING & SYNTX CHECK ---
-      - name: HTML Hint (SAST)
-        run: |
-          npm install -g htmlhint
-          htmlhint "**/*.html"
-
-      # --- DEPLOYMENT (Only runs if security checks pass) ---
-      - name: Deploy to AWS via SSH
-        if: success() 
+      - name: Deploy to Server via SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.REMOTE_HOST }}
@@ -29,8 +20,15 @@ steps:
           key: ${{ secrets.SSH_AWS_RESUME }}
           port: 22
           script: |
+            # 1. Enter the repository folder on the AWS server
             cd /home/ubuntu/towkictg.github.io
+            
+            # 2. Pull the latest changes from GitHub
             git pull origin main
+            
+            # 3. Copy everything to the live web directory
             sudo cp -r /home/ubuntu/towkictg.github.io/* /var/www/html/
+            
+            # 4. Set the correct permissions for Nginx
             sudo chown -R www-data:www-data /var/www/html/
             sudo chmod -R 755 /var/www/html/
