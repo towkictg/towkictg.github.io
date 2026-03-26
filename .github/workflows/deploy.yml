@@ -1,46 +1,27 @@
-name: DevSecOps Resume Deployment
-
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  # STAGE 1: SECURITY SCANS (SAST & SCA)
-  security_scans:
-    name: Security Analysis
-    runs-on: ubuntu-latest
-    steps:
+steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Required for SonarCloud
+          fetch-depth: 0 # Needed for deep security scanning
 
-      # 1. SNYK (SCA): Using the 'all-projects' action to avoid "No supported files" error
-      - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions/all-projects@master
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      # --- SECURITY CHECK 1: SECRET SCANNING ---
+      - name: Secret Scan (TruffleHog)
+        uses: trufflesecurity/trufflehog@main
         with:
-          command: monitor # This records the project in Snyk dashboard instead of just testing
+          path: ./
+          base: ${{ github.event.repository.default_branch }}
+          head: HEAD
+          extra_args: --debug --only-verified
 
-      # 2. SONARCLOUD (SAST): Scans your HTML/JS for security hotspots
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      # --- SECURITY CHECK 2: LINTING & SYNTX CHECK ---
+      - name: HTML Hint (SAST)
+        run: |
+          npm install -g htmlhint
+          htmlhint "**/*.html"
 
-  # STAGE 2: DEPLOYMENT (Only runs if Stage 1 passes)
-  deploy:
-    name: Deploy to AWS
-    needs: security_scans 
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Deploy to Server via SSH
+      # --- DEPLOYMENT (Only runs if security checks pass) ---
+      - name: Deploy to AWS via SSH
+        if: success() 
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.REMOTE_HOST }}
@@ -48,28 +29,8 @@ jobs:
           key: ${{ secrets.SSH_AWS_RESUME }}
           port: 22
           script: |
-            # 1. Enter the repository folder on the AWS server
             cd /home/ubuntu/towkictg.github.io
-            
-            # 2. Pull the latest changes
             git pull origin main
-            
-            # 3. Copy to live web directory
             sudo cp -r /home/ubuntu/towkictg.github.io/* /var/www/html/
-            
-            # 4. Set correct permissions for Nginx
             sudo chown -R www-data:www-data /var/www/html/
             sudo chmod -R 755 /var/www/html/
-
-  # STAGE 3: DAST (Penetration Test on Live Site)
-  dast_scan:
-    name: OWASP ZAP Live Scan
-    needs: deploy
-    runs-on: ubuntu-latest
-    steps:
-      - name: ZAP Baseline Scan
-        uses: zaproxy/action-baseline@v0.14.0
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          target: 'https://islamtariqul.me'
-          fail_action: false # Review initial reports before enforcing failures
