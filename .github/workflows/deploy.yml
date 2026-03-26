@@ -1,12 +1,38 @@
-name: Deploy Resume to AWS
+name: DevSecOps Resume Deployment
 
 on:
   push:
     branches:
-      - main  # This triggers the code whenever you push to your main branch
+      - main  # Triggers whenever you push to the main branch
 
 jobs:
+  # STAGE 1: SECURITY SCANS (SAST & SCA)
+  security_scans:
+    name: Security Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Required for SonarCloud to see code history
+
+      # SNYK: Checks for vulnerabilities in your libraries/dependencies
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+      # SONARCLOUD: Checks your code for security hotspots and quality
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+  # STAGE 2: DEPLOYMENT (Only runs if Stage 1 passes)
   deploy:
+    name: Deploy to AWS
+    needs: security_scans 
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -23,12 +49,25 @@ jobs:
             # 1. Enter the repository folder on the AWS server
             cd /home/ubuntu/towkictg.github.io
             
-            # 2. Pull the latest changes from GitHub to the server
+            # 2. Pull the latest changes
             git pull origin main
             
-            # 3. Copy everything to the live web directory
+            # 3. Copy to live web directory
             sudo cp -r /home/ubuntu/towkictg.github.io/* /var/www/html/
             
-            # 4. Set the correct permissions for Nginx
+            # 4. Set correct permissions for Nginx
             sudo chown -R www-data:www-data /var/www/html/
             sudo chmod -R 755 /var/www/html/
+
+  # STAGE 3: DAST (Penetration Test on Live Site)
+  dast_scan:
+    name: OWASP ZAP Live Scan
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: ZAP Baseline Scan
+        uses: zaproxy/action-baseline@v0.14.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          target: 'https://islamtariqul.me'
+          fail_action: false # Keeps the pipeline green while you review initial reports
