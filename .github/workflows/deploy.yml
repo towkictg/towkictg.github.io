@@ -3,7 +3,7 @@ name: DevSecOps Resume Deployment
 on:
   push:
     branches:
-      - main  # Triggers whenever you push to the main branch
+      - main
 
 jobs:
   # STAGE 1: SECURITY SCANS (SAST & SCA)
@@ -14,15 +14,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Required for SonarCloud to see code history
+          fetch-depth: 0 # Required for SonarCloud
 
-      # SNYK: Checks for vulnerabilities in your libraries/dependencies
+      # 1. SNYK (SCA): Using the 'all-projects' action to avoid "No supported files" error
       - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions/node@master
+        uses: snyk/actions/all-projects@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          command: monitor # This records the project in Snyk dashboard instead of just testing
 
-      # SONARCLOUD: Checks your code for security hotspots and quality
+      # 2. SONARCLOUD (SAST): Scans your HTML/JS for security hotspots
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
@@ -70,4 +72,4 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           target: 'https://islamtariqul.me'
-          fail_action: false # Keeps the pipeline green while you review initial reports
+          fail_action: false # Review initial reports before enforcing failures
