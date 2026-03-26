@@ -1,0 +1,34 @@
+name: Deploy Resume to AWS
+
+on:
+  push:
+    branches:
+      - main  # This triggers the code whenever you push to your main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to Server via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_AWS_RESUME }}
+          port: 22
+          script: |
+            # 1. Enter the repository folder on the AWS server
+            cd /home/ubuntu/towkictg.github.io
+            
+            # 2. Pull the latest changes from GitHub to the server
+            git pull origin main
+            
+            # 3. Copy everything to the live web directory
+            sudo cp -r /home/ubuntu/towkictg.github.io/* /var/www/html/
+            
+            # 4. Set the correct permissions for Nginx
+            sudo chown -R www-data:www-data /var/www/html/
+            sudo chmod -R 755 /var/www/html/
