@@ -47,7 +47,7 @@
                     <div class="col-lg-12">
                         <nav class="navbar navbar-expand-lg">
                             <a class="navbar-brand" href="#home">
-                                <img src="assets/images/logo.svg" alt="Logo" style="width: 55px; height: auto; margin-right: 10px;">
+                                <img src="assets/images/tariqul2.png" alt="Logo" style="width: 75px; height: auto; margin-right: 10px;">
                             </a>
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
                                 <span class="toggler-icon"></span>
@@ -80,19 +80,22 @@
 
                     <div class="col-lg-6">
                         <div class="header_hero_content mt-45">
-                            <h5 class="header_sub_title wow fadeInUp">TARIQUL ISLAM</h5>
+                            <h3 class="header_sub_title wow fadeInUp">TARIQUL ISLAM</h3>
+                            <br>
                             <h2 class="header_title wow fadeInUp">Cybersecurity Analyst</h2>
                             <h2 class="header_title wow fadeInUp">Automotive Security</h2>
                             <h2 class="header_title wow fadeInUp">IT System Support</h2>
                             <h2 class="header_title wow fadeInUp">AI/ML/DL/Computer Vision</h2>
+                            <br>
+                           
 
                             <p class="wow fadeInUp">
-                                Email: tariqulislam2594@gmail.com / tariqul.islam@mail.concordia.ca • Phone: +1 (263) 882-4142
+                                Email: <span id="e1"></span> <br> <span id="e2"></span> <br> Phone: <span id="ph"></span>
                                 <br>
                                 LinkedIn: <a href="https://www.linkedin.com/in/tariqul-islam-concordia-ebl/" target="_blank">Profile</a>
                                 • GitHub: <a href="https://github.com/towkictg" target="_blank">towkictg</a>
-                                <br>
-                                Languages: English, French (A2), Bengali
+                                <br> <br>
+                                Language(s): English, French (A2), Bengali
                             </p>
                         </div>
                     </div>
@@ -218,6 +221,75 @@
             </div>
         </div>
     </section>
+
+    <section id="projects" class="services_area pt-115 pb-120">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="section_title text-center pb-30">
+                        <h5 class="sub_title">Projects</h5>
+                        <h3 class="main_title">My Portfolio</h3>
+                        <ul class="line"><li></li><li></li><li></li></ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="single_service mt-30 wow fadeInUpBig project-hover">
+                        <div style="display:flex; align-items:center; gap:12px; margin-bottom:10px;">
+                            <img src="assets/images/ieee.jpg" alt="IEEE" style="width:40px;">
+                            <h4 class="service_title" style="margin:0;">Bangla License Plate Recognition (Research)</h4>
+                        </div>
+                        <p>Real-Time Bangla License Plate Recognition using Faster-RCNN and SSD. Published in IEEE RAAICON 2019.</p>
+                        <p>🔗 <a href="https://ieeexplore.ieee.org" target="_blank">IEEE Xplore</a></p>
+                        <p><strong>Tools:</strong> Tensorflow, Keras, Python, OpenCV, Anaconda, Data Processing.</p>
+                        <div class="conference-image">
+                            <img src="assets/images/ieee_conf.jpg" alt="IEEE Conference">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="single_service mt-30 wow fadeInUpBig project-hover">
+                        <div style="display:flex; align-items:center; gap:12px; margin-bottom:10px;">
+                            <img src="assets/images/aws.png" alt="AWS" style="width:40px;">
+                            <h4 class="service_title" style="margin:0;">Automated Secure Portfolio (CI/CD)</h4>
+                        </div>
+                        <p>Integrated GitHub Actions with AWS EC2 (Ubuntu/Nginx) for automated secure deployment.</p>
+                        <p><strong>Tools:</strong> AWS, GitHub Actions, YAML, Nginx, SSL/TLS.</p>
+                        <div class="conference-image">
+                            <img src="assets/images/pipeline_diagram.jpg" alt="DevOps Pipeline">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="single_service mt-30 wow fadeInUpBig project-hover">
+                        <div style="display:flex; align-items:center; gap:12px; margin-bottom:10px;">
+                            <i class="lni lni-shield" style="font-size: 30px; color: #00A78E;"></i>
+                            <h4 class="service_title" style="margin:0;">Malicious URL AI Detector (Live)</h4>
+                        </div>
+                        <p>
+                            Developed a high-accuracy phishing detection system using a custom-trained **Decision Tree** model.
+                            The system analyzes lexical features of URLs in real-time to identify malicious intent.
+                            Engineered the full deployment pipeline including feature extraction and a REST API.
+                        </p>
+                        <p style="margin-top: 10px;">
+                            🔗 <a href="https://checker.islamtariqul.me" target="_blank" class="project-link" style="font-weight:bold; color: #00A78E;">Try the Live Tool →</a>
+                        </p>
+                        <p><strong>Tools & Technologies:</strong> Scikit-learn (ML), Python, Pandas, Oracle Cloud (ARM), Nginx Reverse Proxy, Gunicorn, SSL/TLS (Certbot).</p>
+                        <div class="conference-image">
+                            <img src="assets/images/ml_detector_preview.jpg" alt="ML Detector Dashboard">
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
     <section id="courses" class="about_area pt-70 pb-120 gray-bg">
         <div class="container">
             <div class="row">
@@ -277,59 +349,11 @@
             </div>
         </div>
     </section>
-    
 
 
 
-    <section id="projects" class="services_area pt-115 pb-120">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="section_title text-center pb-30">
-                        <h5 class="sub_title">Projects</h5>
-                        <h3 class="main_title">Projects</h3>
-                        <ul class="line"><li></li><li></li><li></li></ul>
-                    </div>
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="single_service mt-30 wow fadeInUpBig">
 
-                        <div class="single_service mt-30 wow fadeInUpBig project-hover">
-                            <div style="display:flex; align-items:center; gap:12px; margin-bottom:10px;">
-                                <img src="assets/images/ieee.jpg" alt="IEEE" style="width:40px;">
-                                <h4 class="service_title" style="margin:0;">
-                                    Bangla License Plate Recognition (Research)
-                                </h4>
-                            </div>
-                            <p>Real-Time Bangla License Plate Recognition using Faster-RCNN and SSD. Published in IEEE RAAICON 2019.</p>
-                            <p>🔗 <a href="https://ieeexplore.ieee.org" target="_blank">IEEE Xplore</a></p>
-                            <div class="conference-image">
-                                <img src="assets/images/ieee_conf.jpg" alt="IEEE Conference">
-                            </div>
-                        </div>
-
-                        <div class="single_service mt-30 wow fadeInUpBig project-hover">
-                            <div style="display:flex; align-items:center; gap:12px; margin-bottom:10px;">
-                                <img src="assets/images/aws.png" alt="AWS" style="width:40px;">
-                                <h4 class="service_title" style="margin:0;">
-                                    Automated Secure Portfolio (CI/CD)
-                                </h4>
-                            </div>
-                            <p>Integrated GitHub Actions with AWS EC2 (Ubuntu/Nginx) for automated secure deployment.</p>
-                            <p><strong>Tools:</strong> AWS, GitHub Actions, YAML, Nginx, SSL/TLS.</p>
-                            <div class="conference-image">
-                                <img src="assets/images/pipeline_diagram.jpg" alt="DevOps Pipeline">
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
     <section id="awards" class="about_area pt-70 pb-120 gray-bg">
         <div class="container">
             <div class="row">
@@ -363,33 +387,34 @@
         </div>
     </section>
 
-    <section id="contact" class="call_to_action_area">
+    <section id="contact" class="services_area pt-70 pb-120">
         <div class="container">
-            <div class="call_to_action_wrapper wow fadeIn">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="call_to_action_box d-md-flex justify-content-between align-items-center">
-                            <div class="call_to_action_content">
-                                <h3 class="action_title">Contact</h3>
-                                <p>Email: tariqul.islam@mail.concordia.ca</p>
-                                <p>Email: tariqulislam2594@gmail.com</p>
-                            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="single_service mt-30 wow fadeInUpBig project-hover text-center" style="padding: 40px;">
+                        <h4 class="service_title">Contact Me</h4>
+                        <div style="width: 60px; height: 3px; background: #00A78E; margin: 15px auto;" class="contact-line"></div>
 
-                            <div class="call_to_action_btn contact-buttons">
-                                <a href="mailto:tariqul.islam@mail.concordia.ca" class="main-btn">Email Me</a>
-                            </div>
+                        <p style="font-size: 16px; margin-top: 15px;">
+                            <strong>Concordia:</strong> <span id="ce1"></span><br>
+                            <strong>Personal:</strong> <span id="ce2"></span>
+                        </p>
+
+                        <div class="mt-25">
+                            <a href="javascript:void(0)" id="mailBtn" class="main-btn">Email Me</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
     <footer id="footer" class="footer_area gray-bg pt-115 pb-120">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="footer_content text-center">
-                        <span class="email">tariqul.islam@mail.concordia.ca</span>
+                        
                         <p class="credit pt-45">Template Designed and Developed by <a href="https://uideck.com/" rel="nofollow">UIdeck</a></p>
                     </div>
                 </div>
@@ -407,3 +432,36 @@
 
 </body>
 </html>
+
+
+<script>
+    (function () {
+        const u1 = "tariqulislam2594", d1 = "gmail.com";
+        const u2 = "tariqul.islam", d2 = "mail.concordia.ca";
+        const phoneNum = "+1 (263) 882-4142";
+
+        // Fill Header Section
+        const e1 = document.getElementById('e1');
+        const e2 = document.getElementById('e2');
+        const ph = document.getElementById('ph');
+
+        if (e1) e1.innerHTML = `<a href="mailto:${u1}@${d1}">${u1}@${d1}</a>`;
+        if (e2) e2.innerHTML = `<a href="mailto:${u2}@${d2}">${u2}@${d2}</a>`;
+        if (ph) ph.innerText = phoneNum;
+
+        // Fill Contact Section (Bottom)
+        const ce1 = document.getElementById('ce1');
+        const ce2 = document.getElementById('ce2');
+
+        if (ce1) ce1.innerText = `${u2}@${d2}`;
+        if (ce2) ce2.innerText = `${u1}@${d1}`;
+
+        // Footer Button Logic
+        const mailBtn = document.getElementById('mailBtn');
+        if (mailBtn) {
+            mailBtn.onclick = function () {
+                window.location.href = `mailto:${u2}@${d2}`;
+            };
+        }
+    })();
+</script>
